@@ -5,23 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Funcionario extends Model
+class Hospede extends Model
 {
     use HasFactory;
 
-    protected $table = 'funcionarios';
+    protected $table = 'hospedes';
 
     protected $fillable = [
         'nome',
         'cpf',
-        'cargo',
         'email',
         'telefone',
+        'cidade',
+        'estado',
+        'anexo',
     ];
 
-    // Um funcionário pode ter registrado muitas reservas.
+    // Um hóspede pode ter muitas reservas.
     public function reservas()
     {
-        return $this->hasMany(Reserva::class, 'funcionario_id');
+        return $this->hasMany(Reserva::class, 'hospede_id');
     }
 }
